@@ -1,11 +1,13 @@
-import React, {useEffect, useState} from 'react'
-import {Container, PostForm} from '../components'
+import React, { useEffect, useState } from 'react'
+import { Container } from '../components'
 import appwriteService from "../appwrite/config";
-import { useNavigate,  useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import PostForm from '../components/PostForm/PostForm.jsx'
+
 
 function EditPost() {
     const [post, setPosts] = useState(null)
-    const {slug} = useParams()
+    const { slug } = useParams()
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -19,13 +21,13 @@ function EditPost() {
             navigate('/')
         }
     }, [slug, navigate])
-  return post ? (
-    <div className='py-8'>
-        <Container>
-            <PostForm post={post} />
-        </Container>
-    </div>
-  ) : null
+    return post ? (
+        <div className='py-8'>
+            <Container>
+                <PostForm post={post} />
+            </Container>
+        </div>
+    ) : null
 }
 
 export default EditPost
