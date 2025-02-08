@@ -27,13 +27,5 @@ export default function AuthLayout({ children, authentication = true }) {
         setLoader(false)
     }, [authStatus, navigate, authentication])
 
-    //   return loader ? <h1>Loading...</h1> : <>{children}</>
-    const renderChildren = () => {
-        if (Array.isArray(children)) {
-            return children.map((child, index) => <React.Fragment key={index}>{child}</React.Fragment>);
-        }
-        return children;
-    };
-
-    return loader ? <h1>Loading...</h1> : <>{renderChildren()}</>;
+    return loader ? <h1>Loading...</h1> : <>{children}</>
 }

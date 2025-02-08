@@ -11,6 +11,7 @@ import Login from './Login.jsx';
 import Input from './Input.jsx';
 import AuthLayout from './AuthLayout.jsx';
 import Button from './Button.jsx';
+import PostForm from './PostForm/PostForm.jsx';
 
 export {
     Header,
@@ -25,5 +26,6 @@ export {
     RTE,
     PostCard,
     AuthLayout,
-    Button
+    Button,
+    PostForm
 };

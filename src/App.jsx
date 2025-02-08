@@ -6,9 +6,6 @@ import { login, logout } from './store/authSlice'
 import { Header, Footer } from './components'
 import { Outlet } from 'react-router-dom'
 
-
-
-
 function App() {
 
   // loading
@@ -27,15 +24,14 @@ function App() {
       .finally(() => {
         setLoading(false)
       })
-
   }, [])
 
   return !loading ? (
-    <div className="min-h-screen flex flex-wrap content-between bg-gray-100">
+    <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
       <div className="w-full block bg-amber-300">
         <Header />
         <main>
-          TODO : 
+          <div className='flex justify-center'>TODO :</div>
           <Outlet />
         </main>
         <Footer />
