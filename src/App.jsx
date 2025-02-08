@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import authServices from './appwrite/auth.js'
 import { login, logout } from './store/authSlice'
 import { Header, Footer } from './components'
+import { Outlet } from 'react-router-dom'
 
 
 
@@ -34,7 +35,8 @@ function App() {
       <div className="w-full block bg-amber-300">
         <Header />
         <main>
-          {/* {TODO : <Outlet />} */}
+          TODO : 
+          <Outlet />
         </main>
         <Footer />
       </div>
