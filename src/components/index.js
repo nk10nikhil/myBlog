@@ -1,6 +1,5 @@
 import Header from './Header/Header.jsx';
 import Footer from './Footer/Footer.jsx';
-import Container from './container/container.jsx';
 import Logo from './Logo.jsx';
 import LogoutBtn from './Header/LogoutBtn.jsx';
 import SignUp from './SignUp.jsx';
@@ -12,6 +11,7 @@ import Input from './Input.jsx';
 import AuthLayout from './AuthLayout.jsx';
 import Button from './Button.jsx';
 import PostForm from './PostForm/PostForm.jsx';
+import Container from './container/Container.jsx';
 
 export {
     Header,
