@@ -18,9 +18,9 @@ function LogoutBtn() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, backgroundColor: 'red-900' }} // Darker purple on hover
             whileTap={{ scale: 0.95 }}
-            className="inline-block px-6 py-2 bg-purple-800 text-white font-semibold rounded-full hover:bg-purple-700 transition-all duration-200 shadow-lg"
+            className="px-6 py-2 bg-red-800 text-white font-semibold rounded-full transition-all duration-200 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-red-900 focus:ring-offset-2"
             onClick={logoutHandler}
         >
             Logout
