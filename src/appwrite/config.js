@@ -2,13 +2,14 @@ import conf from '../conf/conf.js';
 import { Client, ID, Databases, Storage, Query } from "appwrite";
 
 export class Service {
+
     client = new Client();
     databases;
     bucket;
 
     constructor() {
         this.client
-            .setEndpoint(conf.appwriteUrl)
+            .setEndpoint(conf.appwriteURL)
             .setProject(conf.appwriteProjectId);
         this.databases = new Databases(this.client);
         this.bucket = new Storage(this.client);
@@ -58,7 +59,6 @@ export class Service {
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 slug
-
             )
             return true
         } catch (error) {
@@ -87,8 +87,6 @@ export class Service {
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 queries,
-
-
             )
         } catch (error) {
             console.log("Appwrite serive :: getPosts :: error", error);
@@ -130,6 +128,5 @@ export class Service {
     }
 }
 
-
 const service = new Service()
-export default service;
+export default service
