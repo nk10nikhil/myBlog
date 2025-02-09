@@ -1,9 +1,10 @@
 import React, { useCallback } from "react";
 import { useForm } from "react-hook-form";
-import { Button, Input, RTE, Select } from "../index.js";
+import { Button, Input, RTE, Select } from "..";
 import appwriteService from "../../appwrite/config";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
 
 export default function PostForm({ post }) {
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
@@ -71,52 +72,109 @@ export default function PostForm({ post }) {
     }, [watch, slugTransform, setValue]);
 
     return (
-        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-            <div className="w-2/3 px-2">
-                <Input
-                    label="Title :"
-                    placeholder="Title"
-                    className="mb-4"
-                    {...register("title", { required: true })}
-                />
-                <Input
-                    label="Slug :"
-                    placeholder="Slug"
-                    className="mb-4"
-                    {...register("slug", { required: true })}
-                    onInput={(e) => {
-                        setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
-                    }}
-                />
-                <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
+        <motion.form
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            onSubmit={handleSubmit(submit)}
+            className="flex flex-wrap bg-gray-800/30 backdrop-blur-lg rounded-xl p-6 border border-gray-700/50 shadow-2xl"
+        >
+            <div className="w-full lg:w-2/3 px-2">
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                    <Input
+                        label="Title :"
+                        placeholder="Title"
+                        className="mb-4 bg-gray-700/50 text-white border-gray-600 focus:border-blue-500 focus:ring-blue-500"
+                        {...register("title", { required: true })}
+                    />
+                </motion.div>
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                    <Input
+                        label="Slug :"
+                        placeholder="Slug"
+                        className="mb-4 bg-gray-700/50 text-white border-gray-600 focus:border-blue-500 focus:ring-blue-500"
+                        {...register("slug", { required: true })}
+                        onInput={(e) => {
+                            setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
+                        }}
+                    />
+                </motion.div>
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                >
+                    <RTE
+                        label="Content :"
+                        name="content"
+                        control={control}
+                        defaultValue={getValues("content")}
+                        className="bg-gray-700/50 text-white border-gray-600 focus:border-blue-500 focus:ring-blue-500"
+                    />
+                </motion.div>
             </div>
-            <div className="w-1/3 px-2">
-                <Input
-                    label="Featured Image :"
-                    type="file"
-                    className="mb-4"
-                    accept="image/png, image/jpg, image/jpeg, image/gif"
-                    {...register("image", { required: !post })}
-                />
+            <div className="w-full lg:w-1/3 px-2">
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                >
+                    <Input
+                        label="Featured Image :"
+                        type="file"
+                        className="mb-4 bg-gray-700/50 text-white border-gray-600 focus:border-blue-500 focus:ring-blue-500"
+                        accept="image/png, image/jpg, image/jpeg, image/gif"
+                        {...register("image", { required: !post })}
+                    />
+                </motion.div>
                 {post && (
-                    <div className="w-full mb-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 1 }}
+                        className="w-full mb-4"
+                    >
                         <img
                             src={appwriteService.getFilePreview(post.featuredImage)}
                             alt={post.title}
                             className="rounded-lg"
                         />
-                    </div>
+                    </motion.div>
                 )}
-                <Select
-                    options={["active", "inactive"]}
-                    label="Status"
-                    className="mb-4"
-                    {...register("status", { required: true })}
-                />
-                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
-                    {post ? "Update" : "Submit"}
-                </Button>
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 1.2 }}
+                >
+                    <Select
+                        options={["active", "inactive"]}
+                        label="Status"
+                        className="mb-4 bg-gray-700/50 text-white border-gray-600 focus:border-blue-500 focus:ring-blue-500"
+                        {...register("status", { required: true })}
+                    />
+                </motion.div>
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 1.4 }}
+                >
+                    <Button
+                        type="submit"
+                        bgColor={post ? "bg-green-600 hover:bg-green-700" : "bg-blue-600 hover:bg-blue-700"}
+                        className="w-full text-white font-semibold py-2 rounded-lg transition-all duration-200"
+                    >
+                        {post ? "Update" : "Submit"}
+                    </Button>
+                </motion.div>
             </div>
-        </form>
+        </motion.form>
     );
 }

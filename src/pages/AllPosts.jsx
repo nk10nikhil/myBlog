@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import appwriteService from "../appwrite/config";
+import React, { useState, useEffect } from 'react';
 import { Container, PostCard } from '../components';
+import appwriteService from "../appwrite/config";
 import { motion } from 'framer-motion';
 
-function Home() {
+function AllPosts() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -69,7 +69,7 @@ function Home() {
                         transition={{ duration: 0.5 }}
                         className="text-2xl font-bold text-gray-400"
                     >
-                        No posts available. Login to create or read posts.
+                        No posts available. Create a post to get started!
                     </motion.h1>
                 </Container>
             </div>
@@ -102,4 +102,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default AllPosts;

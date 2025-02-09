@@ -8,7 +8,6 @@ import { Outlet } from 'react-router-dom'
 
 function App() {
 
-  // loading
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
 
@@ -27,18 +26,14 @@ function App() {
   }, [])
 
   return !loading ? (
-    <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
-      <div className="w-full block bg-amber-300">
+    <div className="flex flex-col min-h-screen content-between bg-black">
         <Header />
-        <main>
-          <div className='flex justify-center'>TODO :</div>
+        <main className='flex-grow mx-10 bg-gradient-to-r from-gray-700 to-gray-900 rounded-2xl'>
           <Outlet />
         </main>
         <Footer />
-      </div>
     </div>
   ) : null
-
 }
 
 export default App

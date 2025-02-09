@@ -37,29 +37,33 @@ function Header() {
     ];
 
     return (
-        <header className='py-3 shadow bg-gray-500'>
+        <header className='py-3 shadow-lg bg-gradient-to-r from-gray-800 to-gray-900 mx-10 my-5 rounded-2xl'>
             <Container>
-                <nav className='flex'>
-                    <div className='mr-4'>
+                <nav className='flex items-center justify-between'>
+                    {/* Logo */}
+                    <div className='flex-shrink-0'>
                         <Link to='/'>
-                            <Logo width='70px' />
-
+                            <Logo width='70px' className="text-white" />
                         </Link>
                     </div>
-                    <ul className='flex ml-auto'>
+
+                    {/* Navigation Items */}
+                    <ul className='flex space-x-4'>
                         {navItems.map((item) =>
                             item.active ? (
                                 <li key={item.name}>
                                     <button
                                         onClick={() => navigate(item.slug)}
-                                        className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
-                                    >{item.name}</button>
+                                        className='px-4 py-2 text-sm font-medium text-white bg-transparent rounded-lg hover:bg-purple-500 hover:text-white transition-colors duration-300 hover:cursor-pointer'
+                                    >
+                                        {item.name}
+                                    </button>
                                 </li>
                             ) : null
                         )}
                         {authStatus && (
                             <li>
-                                <LogoutBtn />
+                                <LogoutBtn className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors duration-300" />
                             </li>
                         )}
                     </ul>
